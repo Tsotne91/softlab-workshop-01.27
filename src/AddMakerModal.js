@@ -1,14 +1,17 @@
 import React from 'react';
-import {Button, Form} from 'react-bootstrap'
+import {Button, Form, InputGroup} from 'react-bootstrap'
 import {Modal} from "react-bootstrap";
 
 function AddMakerModal(props) {
     return (
         <Modal {...props}>
-            <Form>
+            <Form className="text-center m-2">
+                <InputGroup className="mb-3 my-2">
                 <Form.Control type="text" placeholder="Enter a maker" />
-            </Form>
+
+            </InputGroup>
             <Button>Add</Button>
+            </Form>
         </Modal>
     );
 }

@@ -24,7 +24,10 @@ function Categories(props) {
                     </tr>
                 </tbody>
             </Table>
-            <AddCategoryModal show={modalShow}/>
+            <AddCategoryModal
+                show={modalShow}
+
+            />
             <Button onClick={()=> setModalShow(true)}>Add category</Button>
         </>
     );
