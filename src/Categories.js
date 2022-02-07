@@ -9,7 +9,9 @@ function Categories() {
     const [categories, setCategories] = useState([]);
 
     useEffect(()=> {
-    shopApi.get('/categories').then(res => setCategories(res.data)).catch(console.error);
+    shopApi.get('/categories')
+        .then(res => setCategories(res.data))
+        .catch(console.error);
     }, [])
 
     return (
@@ -47,7 +49,9 @@ function Categories() {
             </Table>
             <AddCategoryModal
                 show={modalShow}
-
+                onSave={()=>{
+                setModalShow(false)
+                }}
             />
             <Button onClick={()=> setModalShow(true)}>Add category</Button>
         </>

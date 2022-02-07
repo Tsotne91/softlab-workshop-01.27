@@ -12,9 +12,8 @@ function AddCategoryModal(props) {
 
     const submitForm = async (e) => {
         e.preventDefault();
-       const response = await shopApi.post('/categories', formValue);
-        console.log(response);
-       //e.target.parentElement.style.display = "none";
+       await shopApi.post('/categories', formValue);
+        props.onSave();
     }
 
     return (
