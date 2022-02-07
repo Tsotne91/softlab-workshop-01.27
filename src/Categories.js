@@ -28,24 +28,21 @@ function Categories() {
                         <td>3</td>
                         <td>This is a Category Name</td>
                     </tr>
-
-                        {
-                        categories.map(category => (
-                            <tr key={category.id}>
-                                <td>
-                                    {category.id}
-                                </td>
-                                <td>
-                                    {category.parent_id}
-                                </td>
-                                <td>
-                                    {category.category_name}
-                                </td>
-
-                            </tr>
+                    {
+                     categories.map(category => (
+                     <tr key={category.id}>
+                         <td>
+                            {category.id}
+                         </td>
+                         <td>
+                            {category.parent_id}
+                         </td>
+                         <td>
+                            {category.category_name}
+                         </td>
+                     </tr>
                             ))
                     }
-
                 </tbody>
             </Table>
             <AddCategoryModal

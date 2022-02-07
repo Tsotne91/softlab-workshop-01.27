@@ -12,8 +12,9 @@ function AddCategoryModal(props) {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        const response = await shopApi.post('/categories', formValue);
+       const response = await shopApi.post('/categories', formValue);
         console.log(response);
+       //e.target.parentElement.style.display = "none";
     }
 
     return (
@@ -29,6 +30,7 @@ function AddCategoryModal(props) {
             <Form.Control type="number" placeholder="Enter parent ID"
                               value={formValue.parent_id}
                               onChange={(event => setFormValue({
+                                  ...formValue,
                                   parent_id: event.target.value,
                               }))}
             />
