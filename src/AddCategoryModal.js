@@ -1,23 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Form, InputGroup} from 'react-bootstrap'
 import {Modal} from "react-bootstrap";
+import shopApi from "./shopApi";
 
 function AddCategoryModal(props) {
-    const [formValue, setFormValue] = useState('');
-
-    const addedData = (input) => {
-        return (
-            <tr>
-                <td>12345</td>
-                <td>3</td>
-                <td>{input}</td>
-            </tr>
-        )
+    const initialValues = {
+        category_name:'',
+        parent_id:''
     }
+    const [formValue, setFormValue] = useState(initialValues);
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault();
-        console.log(formValue);
+        const response = await shopApi.post('/categories', formValue);
+        console.log(response);
     }
 
     return (
@@ -25,8 +21,16 @@ function AddCategoryModal(props) {
         <Form className="text-center m-2" onSubmit={submitForm}>
             <InputGroup className="mb-3 my-2">
             <Form.Control type="text" placeholder="Enter a category name"
-                          value={formValue}
-                          onChange={(event => setFormValue(event.target.value))}
+                          value={formValue.category_name}
+                          onChange={(event => setFormValue({
+                              category_name: event.target.value,
+                              }))}
+            />
+            <Form.Control type="number" placeholder="Enter parent ID"
+                              value={formValue.parent_id}
+                              onChange={(event => setFormValue({
+                                  parent_id: event.target.value,
+                              }))}
             />
             </InputGroup>
             <Button type="submit">Add</Button>
